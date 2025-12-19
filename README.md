@@ -127,31 +127,6 @@ locations/
    - **Nom d'utilisateur** : `admin`
    - **Mot de passe** : `admin123`
 
-## Données de test
-
-La base de données contient des données de test :
-
-### Véhicules
-- Peugeot 208 (35€/jour)
-- Renault Clio (30€/jour)
-- Citroën C3 (32€/jour)
-- Volkswagen Golf (45€/jour)
-- BMW Série 3 (80€/jour)
-
-### Clients
-- Marie Dubois
-- Jean Martin
-- Sophie Lefebvre
-
-## Sécurité
-
-- Utilisation de **PDO** avec des **requêtes préparées** pour prévenir les injections SQL
-- Gestion des sessions PHP pour l'authentification
-- Validation côté serveur de toutes les entrées
-- Protection contre les suppressions accidentelles (vérification des dépendances)
-
-## Utilisation
-
 ### Gestion des véhicules
 1. Cliquer sur "Véhicules" dans le menu
 2. Cliquer sur "+ Ajouter un véhicule"
