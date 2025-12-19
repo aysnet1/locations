@@ -1,0 +1,55 @@
+# Configuration Apache pour l'application de location de voitures
+
+# Activer le moteur de réécriture
+RewriteEngine On
+
+# Désactiver l'affichage des répertoires
+Options -Indexes
+
+# Page d'erreur personnalisée
+ErrorDocument 404 /index.php
+
+# Protection des fichiers sensibles
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Protection du fichier de configuration
+<Files "database.php">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# Autoriser l'accès aux fichiers CSS, JS, et images
+<FilesMatch "\.(css|js|jpg|jpeg|png|gif|ico|svg)$">
+    Order allow,deny
+    Allow from all
+</FilesMatch>
+
+# Configuration du cache pour les ressources statiques
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+</IfModule>
+
+# Configuration de la compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript
+</IfModule>
+
+# Configuration de la sécurité
+<IfModule mod_headers.c>
+    # Prévention du clickjacking
+    Header always set X-Frame-Options "SAMEORIGIN"
+    
+    # Protection XSS
+    Header always set X-XSS-Protection "1; mode=block"
+    
+    # Prévention du sniffing MIME
+    Header always set X-Content-Type-Options "nosniff"
+</IfModule>
